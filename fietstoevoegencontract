@@ -1,0 +1,15 @@
+pragma solidity 0.5.10;
+
+import "./vervoersmiddelencontract.sol";
+
+contract FietsToevoegenContract is VervoersMiddelenContract{
+    
+    function FietsToevoegen(string memory _merk, string memory _kleur, uint _maat)public returns(uint){
+       return voegVervoerToe(_merk,_kleur, _maat, VervoersType.FIETS);
+    }
+    
+     function wisFiets(address _address) public alleenContractEigenaar {//inherited from Ownable.sol
+        delete ownerVanVervoer[_address];
+    }
+
+}
